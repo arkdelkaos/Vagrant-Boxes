@@ -11,6 +11,13 @@ Vagrant.configure('2') do |config|
   config.vm.network "forwarded_port", guest: 77777, host: 77777 #Puerto por defecto para la app en modo dev
   config.vm.network "private_network", ip: "192.168.1.77"
   config.vm.synced_folder "htdocs", "/var/www/html" #local|vm !revisar!
+  
+  config.vm.provision :shell do |shell|
+  shell.inline = "mkdir -p /etc/puppet/modules;
+                  puppet module install puppetlabs-git;
+                  puppet module install puppetlabs-nodejs;
+                  puppet module install puppetlabs-mongodb"
+  end  
   config.vm.provision :puppet do |puppet|
      puppet.manifests_path = 'puppet/manifests'
      puppet.manifest_file = 'default.pp'
