@@ -5,7 +5,7 @@
 VAGRANTFILE_API_VERSION = "2"
  
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "puppetlabs/centos-7.0-64-puppet"
+  config.vm.box = "ubuntu/trusty64"
   config.vm.network "forwarded_port", guest: 77777, host: 77777 #Puerto por defecto para la app en modo dev
   config.vm.network "private_network", ip: "192.168.1.77"
   config.vm.synced_folder "htdocs", "/var/www/html" #local|vm !revisar!
