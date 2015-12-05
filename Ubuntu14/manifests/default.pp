@@ -31,10 +31,8 @@ class tools {
     }
 }
 
-#MAIN
 class {'::mongodb::server':
     port    => 27017,
-    ensure  => "present"
 }
 
 class nodejs {
