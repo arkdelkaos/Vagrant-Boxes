@@ -49,43 +49,36 @@ class nodejs {
 package { 'express':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'yo':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'generator-angular ':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'nodemon':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'bower':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'gulp':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'grunt-cli':
     provider => 'npm',
     require  => Class["nodejs"],
-    stage => last,
 }
 
 package { 'compass':
