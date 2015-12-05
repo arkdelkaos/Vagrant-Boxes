@@ -60,12 +60,14 @@ class nodejs {
 
 
 include apt_update
+include class apt_ruby
 include nodejs
+
 class { 'ruby':
   gems_version  => 'latest'
 }
-include tools
 
+include tools
 
 package { 'express':
     provider => 'npm',
