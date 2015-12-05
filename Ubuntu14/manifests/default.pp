@@ -39,7 +39,7 @@ class nodejs {
   }
 
   exec { "install_node":
-    command => "n stable",
+    command => "n 5.1.1",
     path => ["/bin", "/usr/bin", "/usr/local/bin"],  
     require => [Exec["git_clone_n"], Exec["install_n"]]
   }
