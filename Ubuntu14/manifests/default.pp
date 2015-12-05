@@ -3,15 +3,24 @@ stage { "last": require => Stage["main"] }
 
 #PRE
 class { 'apt_update':
-    exec { 'aptGetUpdate':
+    exec { "aptGetUpdate":
         command => "sudo apt-get update",
-        path => ["/bin", "/usr/bin"]
-    },
-    stage => pre,
+        path => ["/bin", "/usr/bin"],
+        stage => pre,
+    }
 }
-package { 'git':
-    ensure => 'installed',
-    stage => pre
+
+class othertools {
+    package { "git":
+        ensure => latest,
+        require => Exec["aptGetUpdate"],
+        stage => pre,
+    }
+    package { "curl":
+        ensure => present,
+        require => Exec["aptGetUpdate"]
+        stage => pre,
+    }
 }
 
 #MAIN
