@@ -54,7 +54,6 @@ class nodejs {
 include apt_update
 include apt_ruby
 include nodejs
-include mongodb
 
 class { 'ruby':
   gems_version  => 'latest'
