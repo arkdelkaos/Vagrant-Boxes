@@ -22,10 +22,9 @@ Con o sin verbose+debug, tiende a resular peligrosamente lenta, ya que al cabo d
 No he encontrado solución al probema: Ármate de paciencia, y espera ;)
 
 #####IP y Puertos:
-192.168.7.77<br>
--- 27017: Mongodb<br>
--- 7777: dev<br>
--- 3333: pro<br>
+192.168.7.77  
+* 7777: dev
+* 3333: pro
 
 #####Puppet
 * git
