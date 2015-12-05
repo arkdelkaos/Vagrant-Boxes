@@ -30,6 +30,12 @@ class tools {
     }
 }
 
+class {'::mongodb::server':
+    port    => 27017,
+    verbose => true,
+    ensure  => "present"
+}
+
 class nodejs {
   exec { "git_clone_n":
     command => "git clone https://github.com/visionmedia/n.git /home/vagrant/n",
@@ -49,11 +55,6 @@ class nodejs {
     path => ["/bin", "/usr/bin", "/usr/local/bin"],  
     require => [Exec["git_clone_n"], Exec["install_n"]]
   }
-}
-
-class {'::mongodb::server':
-  port    => 27018,
-  verbose => true,
 }
 
 include apt_update
