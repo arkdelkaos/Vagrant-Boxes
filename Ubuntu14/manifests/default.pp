@@ -25,7 +25,7 @@ class paquetes {
     package { 'bower':
       ensure   => 'present',
       provider => 'npm',
-        require  => Class["nodejs"]],
+        require  => Class["nodejs"],
     }
     package { 'gulp':
       ensure   => 'present',
