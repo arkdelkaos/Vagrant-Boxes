@@ -1,6 +1,16 @@
 # Vagrant-Boxes
 Configuraciones de entorno de trabajo. Actualmente solo para virtualbox.
 
+### Pre-Install
+* Mac  
+```
+brew install Caskroom/cask/virtualbox Caskroom/cask/vagrant
+````
+* Windows  
+```
+choco install vagrant virtualbox
+```
+
 ### Ubuntu 14
 ```
 git clone https://github.com/arkdelkaos/Vagrant-Boxes.git Vagrant-Boxes
