@@ -36,8 +36,7 @@ class {'::mongodb::globals':
 }->
 class {'::mongodb::server': 
     port    => 27017,
-    verbose => true,
-    ensure  => "present"
+    verbose => true
 }->
 class {'::mongodb::client': }
 
