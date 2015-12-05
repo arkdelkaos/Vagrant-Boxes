@@ -15,7 +15,6 @@ class apt_ruby {
     }
 }
 
-
 class tools {
     package { "git":
         ensure => latest,
@@ -52,11 +51,10 @@ class nodejs {
   }
 }
 
-
+include '::mongodb::server'
 include apt_update
 include apt_ruby
 include nodejs
-include '::mongodb::server'
 
 class { 'ruby':
   gems_version  => 'latest'
