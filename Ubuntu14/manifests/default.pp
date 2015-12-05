@@ -109,5 +109,5 @@ package { 'generator-karma':
 
 package { 'compass':
     provider => 'gem',
-    require => Exec[aptRubyDev],
+    require => Exec["aptRubyDev"],
 }
