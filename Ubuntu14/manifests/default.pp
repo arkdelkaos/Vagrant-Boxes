@@ -22,7 +22,7 @@ class custom_mongo {
         require => Exec["aptGetUpdate"]
     }
     exec { 'aptMongo':
-        command => "sudo apt-get install mongodb-org",
+        command => "sudo apt-get install -y --force-yes mongodb-org",
         path => ["/bin", "/usr/bin"],
         require => [Exec["aptRepoMongo"]]
     }
