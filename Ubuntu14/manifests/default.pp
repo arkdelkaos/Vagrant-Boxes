@@ -11,7 +11,6 @@ class {'::mongodb::server':
   stage => main,
 }
 class { 'nodejs':
-  version => 'stable',
   stage => main,
 }
 exec { "apt-update":
