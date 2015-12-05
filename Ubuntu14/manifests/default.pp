@@ -3,7 +3,6 @@ stage { "last": require => Stage["main"] }
 
 #PRE
 include git
-exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
 #MAIN
 class {'::mongodb::server':
