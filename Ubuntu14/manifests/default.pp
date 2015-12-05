@@ -14,8 +14,8 @@ class { 'nodejs':
   version => 'stable',
   stage => main,
 }
-class { "apt-update":
-    exec { "apt-get update":
+class { 'apt-update':
+    exec { 'apt-get update':
         command => "/usr/bin/apt-get update"
     },
     stage => main,
