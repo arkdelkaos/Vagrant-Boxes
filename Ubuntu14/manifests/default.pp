@@ -101,4 +101,5 @@ package { 'generator-karma':
 
 package { 'compass':
     provider => 'gem',
+    require => Class["ruby"],
 }
