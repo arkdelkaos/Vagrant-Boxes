@@ -24,10 +24,19 @@ class tools {
 }
 
 #MAIN
-class {'::mongodb::server':
-  port    => 27018,
-  verbose => true,
+class mongodb {
+  class {'::mongodb::globals':
+    manage_package_repo => true,
+    bind_ip             => ["127.0.0.1"],
+  }->
+  class {'::mongodb::server':
+    port    => 27017,
+    verbose => true,
+    ensure  => "present"
+  }->
+  class {'::mongodb::client': }
 }
+
 class nodejs {
   exec { "git_clone_n":
     command => "git clone https://github.com/visionmedia/n.git /home/vagrant/n",
@@ -51,8 +60,13 @@ class nodejs {
 
 
 include apt_update
-include tools
 include nodejs
+include mongodb
+class { 'ruby':
+  gems_version  => 'latest'
+}
+include tools
+
 
 package { 'express':
     provider => 'npm',
@@ -85,6 +99,11 @@ package { 'gulp':
 }
 
 package { 'grunt-cli':
+    provider => 'npm',
+    require  => Class["nodejs"],
+}
+
+package { 'generator-karma':
     provider => 'npm',
     require  => Class["nodejs"],
 }
