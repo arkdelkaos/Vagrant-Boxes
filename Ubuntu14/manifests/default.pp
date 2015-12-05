@@ -1,55 +1,74 @@
-class paquetes {
+stage { "pre": before => Stage["main"] }
+stage { "last": require => Stage["main"] }
+
+#PRE
+include git
+
+#MAIN
+include '::mongodb::server'
+class { 'nodejs':
+  version => 'stable',
+  stage => main,
+}
+class apt-update {
     exec { "apt-get update":
-      command => "/usr/bin/apt-get update"
-    }
-    package { 'express':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'yo':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'generator-angular ':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'nodemon':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'bower':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'gulp':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'grunt-cli':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    package { 'n':
-      ensure   => 'present',
-      provider => 'npm',
-        require  => Class["nodejs"],
-    }
-    class basic_exec {
-      exec { 'install_n_and_node-5.1.1':
-        command => 'n 5.1.1',
-      }
-    }
+        command => "/usr/bin/apt-get update"
+    },
+    stage => main,
 }
 
-include git
-include '::mongodb::server'
-include nodejs
-include paquetes
+#LAST
+package { 'express':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'yo':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'generator-angular ':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'nodemon':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'bower':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'gulp':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'grunt-cli':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+}
+package { 'n':
+    ensure   => 'present',
+    provider => 'npm',
+    require  => Class["nodejs"],
+    stage => last,
+    }  
+    class basic_exec {
+        exec { 'install_n_and_node-5.1.1':
+            command => 'n 5.1.1',
+        },
+    stage => last,
+    }
