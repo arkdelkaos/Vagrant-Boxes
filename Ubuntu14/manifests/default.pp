@@ -10,9 +10,9 @@ class apt_update {
 class apt_ruby {
     exec { 'aptRubyDev':
         command => "sudo apt-get install ruby1.9.1-dev",
-        path => ["/bin", "/usr/bin"]
-    },
-    require => Exec[aptGetUpdate],
+        path => ["/bin", "/usr/bin"],
+        require => Exec[aptGetUpdate]
+    }
 }
 
 
