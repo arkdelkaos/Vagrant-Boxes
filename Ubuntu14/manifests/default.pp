@@ -56,14 +56,10 @@ class nodejs {
 include apt_update
 include apt_ruby
 include nodejs
+include '::mongodb::server'
 
 class { 'ruby':
   gems_version  => 'latest'
-}
-
-class {'::mongodb::server':
-  port    => 27018,
-  verbose => true,
 }
 
 include tools
