@@ -17,7 +17,7 @@ class apt_ruby {
 
 class custom_mongo {
     exec { 'aptRepoMongo':
-        command => "echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list",
+        command => "echo 'deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse' | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list",
         path => ["/bin", "/usr/bin"],
         require => Exec["aptGetUpdate"]
     }
