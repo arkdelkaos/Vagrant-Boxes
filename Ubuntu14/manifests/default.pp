@@ -51,7 +51,11 @@ class nodejs {
   }
 }
 
-include '::mongodb::server'
+class {'::mongodb::server':
+  port    => 27018,
+  verbose => true,
+}
+
 include apt_update
 include apt_ruby
 include nodejs
