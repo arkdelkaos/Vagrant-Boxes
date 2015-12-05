@@ -16,3 +16,21 @@ No he encontrado solución al probema: Ármate de paciencia, y espera ;)
 -- 27017: Mongodb<br>
 -- 7777: dev<br>
 -- 3333: pro<br>
+
+#####Puppet
+* git
+* curl  
+* g++  
+* mongodb  
+* n  
+  * node 5.1.1
+* express  
+* yo  
+  * generator-angular  
+  * generator-karma  
+* nodemon  
+* bower  
+* gulp  
+* grunt-cli  
+* ruby-dev  
+**compass
