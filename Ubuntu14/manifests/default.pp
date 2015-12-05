@@ -60,7 +60,7 @@ class nodejs {
 
 
 include apt_update
-include class apt_ruby
+include apt_ruby
 include nodejs
 
 class { 'ruby':
