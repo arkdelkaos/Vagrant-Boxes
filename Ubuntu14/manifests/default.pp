@@ -30,17 +30,6 @@ class tools {
     }
 }
 
-class {'::mongodb::globals':
-  mongod_service_manage => true,
-  service_enable => true
-}->
-class {'::mongodb::server': 
-    port    => 27017,
-    verbose => true
-}->
-class {'::mongodb::client': }
-
-
 class nodejs {
   exec { "git_clone_n":
     command => "git clone https://github.com/visionmedia/n.git /home/vagrant/n",
@@ -65,6 +54,7 @@ class nodejs {
 include apt_update
 include apt_ruby
 include nodejs
+include mongodb
 
 class { 'ruby':
   gems_version  => 'latest'
