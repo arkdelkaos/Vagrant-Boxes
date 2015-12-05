@@ -53,13 +53,3 @@ include git
 include '::mongodb::server'
 include nodejs
 include paquetes
-
-class prepare {
-  class { 'nodejs':
-      version => 'stable',
-  }
-}
-include prepare
-package {'nodejs': ensure => present, require => Class['prepare'],}
-
-
