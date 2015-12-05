@@ -7,6 +7,14 @@ class apt_update {
         path => ["/bin", "/usr/bin"]
     }
 }
+class apt_ruby {
+    exec { 'aptRubyDev':
+        command => "sudo apt-get install ruby1.9.1-dev",
+        path => ["/bin", "/usr/bin"]
+    },
+    require => Exec[aptGetUpdate],
+}
+
 
 class tools {
     package { "git":
@@ -101,5 +109,5 @@ package { 'generator-karma':
 
 package { 'compass':
     provider => 'gem',
-    require => Class["ruby"],
+    require => Exec[aptRubyDev],
 }
