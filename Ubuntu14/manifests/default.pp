@@ -6,7 +6,11 @@ include git
 Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
 
 #MAIN
-include '::mongodb::server'
+class {'::mongodb::server':
+  port    => 27018,
+  verbose => true,
+  stage => main,
+}
 class { 'nodejs':
   version => 'stable',
   stage => main,
