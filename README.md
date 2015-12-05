@@ -33,4 +33,4 @@ No he encontrado solución al probema: Ármate de paciencia, y espera ;)
 * gulp  
 * grunt-cli  
 * ruby-dev  
-**compass
+  * compass
