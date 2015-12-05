@@ -26,7 +26,7 @@ class custom_mongo {
         path => ["/bin", "/usr/bin"],
         require => [Exec["aptGetUpdate"], Exec["aptRepoMongo"]]
     }
-    exec { 'aptMongo':
+    exec { 'upMongo':
         command => "sudo service mongod start",
         path => ["/bin", "/usr/bin"],
         require => Exec["aptMongo"]
