@@ -95,15 +95,3 @@ package { 'compass':
 file { "/etc/profile.d/node_path.sh":
     content => "PATH=\$PATH:/usr/local/node/node-default/bin\n",
 }
-
-package { 'n':
-    provider => 'npm',
-    require  => Class["nodejs"],
-    stage => last,
-    }  
-    class basic_exec {
-        exec { 'install_n_and_node-5.1.1':
-            command => 'n 5.1.1',
-        },
-    stage => last,
-    }
