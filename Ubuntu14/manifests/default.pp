@@ -15,6 +15,24 @@ class apt_ruby {
     }
 }
 
+class custom_mongo {
+    exec { 'aptRepoMongo':
+        command => "echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list",
+        path => ["/bin", "/usr/bin"],
+        require => Exec["aptGetUpdate"]
+    }
+    exec { 'aptMongo':
+        command => "sudo apt-get install -y mongodb-org",
+        path => ["/bin", "/usr/bin"],
+        require => [Exec["aptGetUpdate"], Exec["aptRepoMongo"]]
+    }
+    exec { 'aptMongo':
+        command => "sudo service mongod start",
+        path => ["/bin", "/usr/bin"],
+        require => Exec["aptMongo"]
+    }
+}
+
 class tools {
     package { "git":
         ensure => latest,
@@ -52,6 +70,7 @@ class nodejs {
 }
 
 include apt_update
+include custom_mongo
 include apt_ruby
 include nodejs
 
