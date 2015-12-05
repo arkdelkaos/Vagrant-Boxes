@@ -30,11 +30,17 @@ class tools {
     }
 }
 
-class {'::mongodb::server':
+class {'::mongodb::globals':
+  mongod_service_manage: true,
+  service_enable: true
+}->
+class {'::mongodb::server': 
     port    => 27017,
     verbose => true,
     ensure  => "present"
-}
+}->
+class {'::mongodb::client': }
+
 
 class nodejs {
   exec { "git_clone_n":
