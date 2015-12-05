@@ -31,8 +31,8 @@ class tools {
 }
 
 class {'::mongodb::globals':
-  mongod_service_manage: true,
-  service_enable: true
+  mongod_service_manage => true,
+  service_enable => true
 }->
 class {'::mongodb::server': 
     port    => 27017,
