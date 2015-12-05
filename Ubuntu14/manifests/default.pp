@@ -45,7 +45,12 @@ class nodejs {
   }
 }
 
-#LAST
+
+include apt_update
+include tools
+include nodejs
+include mongodb
+
 package { 'express':
     provider => 'npm',
     require  => Class["nodejs"],
