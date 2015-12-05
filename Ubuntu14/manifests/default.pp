@@ -91,7 +91,3 @@ package { 'grunt-cli':
 package { 'compass':
     provider => 'gem',
 }
-
-file { "/etc/profile.d/node_path.sh":
-    content => "PATH=\$PATH:/usr/local/node/node-default/bin\n",
-}
