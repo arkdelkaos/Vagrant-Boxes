@@ -2,7 +2,7 @@ stage { "pre": before => Stage["main"] }
 stage { "last": require => Stage["main"] }
 
 class apt_update {
-    exec { "aptGetUpdate":
+    exec { 'aptGetUpdate':
         command => "sudo apt-get update",
         path => ["/bin", "/usr/bin"]
     }
