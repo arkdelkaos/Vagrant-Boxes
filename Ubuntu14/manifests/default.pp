@@ -1,25 +1,21 @@
 stage { "pre": before => Stage["main"] }
 stage { "last": require => Stage["main"] }
 
-#PRE
-class { 'apt_update':
+class apt_update {
     exec { "aptGetUpdate":
         command => "sudo apt-get update",
-        path => ["/bin", "/usr/bin"],
-        stage => pre,
+        path => ["/bin", "/usr/bin"]
     }
 }
 
-class othertools {
+class tools {
     package { "git":
         ensure => latest,
         require => Exec["aptGetUpdate"],
-        stage => pre,
     }
     package { "curl":
         ensure => present,
-        require => Exec["aptGetUpdate"]
-        stage => pre,
+        require => Exec["aptGetUpdate"],
     }
 }
 
@@ -27,11 +23,26 @@ class othertools {
 class {'::mongodb::server':
   port    => 27018,
   verbose => true,
-  stage => main,
 }
-class { 'nodejs':
-  version => 'stable',
-  stage => main,
+class nodejs {
+  exec { "git_clone_n":
+    command => "git clone https://github.com/visionmedia/n.git /home/vagrant/n",
+    path => ["/bin", "/usr/bin"],
+    require => [Exec["aptGetUpdate"], Package["git"], Package["curl"], Package["g++"]]
+  }
+
+  exec { "install_n":
+    command => "make install",
+    path => ["/bin", "/usr/bin"],
+    cwd => "/home/vagrant/n",
+    require => Exec["git_clone_n"]
+  }
+
+  exec { "install_node":
+    command => "n stable",
+    path => ["/bin", "/usr/bin", "/usr/local/bin"],  
+    require => [Exec["git_clone_n"], Exec["install_n"]]
+  }
 }
 
 #LAST
