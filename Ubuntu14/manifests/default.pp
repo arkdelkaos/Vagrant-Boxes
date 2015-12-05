@@ -31,10 +31,6 @@ class tools {
     }
 }
 
-class {'::mongodb::server':
-    port    => 27017,
-}
-
 class nodejs {
   exec { "git_clone_n":
     command => "git clone https://github.com/visionmedia/n.git /home/vagrant/n",
@@ -63,6 +59,11 @@ include nodejs
 
 class { 'ruby':
   gems_version  => 'latest'
+}
+
+class {'::mongodb::server':
+  port    => 27018,
+  verbose => true,
 }
 
 include tools
