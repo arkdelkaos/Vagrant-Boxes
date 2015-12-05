@@ -17,6 +17,10 @@ class tools {
         ensure => present,
         require => Exec["aptGetUpdate"],
     }
+    package { "g++":
+        ensure => present,
+        require => Exec["aptGetUpdate"]
+    }
 }
 
 #MAIN
