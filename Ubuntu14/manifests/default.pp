@@ -13,7 +13,3 @@ class {'::mongodb::server':
 class { 'nodejs':
   stage => main,
 }
-exec { "apt-update":
-    command => "/usr/bin/apt-get update",
-    stage  => main,
-}
