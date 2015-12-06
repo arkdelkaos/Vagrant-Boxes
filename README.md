@@ -6,7 +6,7 @@ Configuraciones de entorno de trabajo. Actualmente solo para virtualbox.
 ```
 brew install Caskroom/cask/virtualbox Caskroom/cask/vagrant
 ````
-* Windows  
+* Windows  (Recomiendo encarecidamente usar CMDER)
 ```
 choco install vagrant virtualbox
 ```
