@@ -20,7 +20,6 @@ Vagrant.configure('2') do |config|
   config.vm.network "forwarded_port", guest: 22, host: 7722, id: 'ssh' #Puerto por defecto para la app en modo pro
   config.vm.network "private_network", ip: "192.168.7.77"
   config.vm.synced_folder "htdocs", "/var/www/html" #local|vm
-  config.vm.synced_folder "htdocs", "/home/vagrant/htdocs" #local|vm
 
 
   config.vm.provision :shell do |shell|
